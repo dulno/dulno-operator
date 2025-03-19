@@ -1,0 +1,33 @@
+package com.dulno.operator.distribution.event.node;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
+import com.dulno.core.event.Event;
+import com.dulno.operator.distribution.client.OperatorClient;
+
+@Getter
+@Accessors(fluent = true)
+@RequiredArgsConstructor(staticName = "create")
+public final class NodeDisconnectEvent extends Event {
+  public enum DisconnectReason {
+    CONNECTION_FAILED,
+    SHUTDOWN,
+    TIME_OUT;
+
+    public boolean isConnectionFailed() {
+      return this == DisconnectReason.CONNECTION_FAILED;
+    }
+
+    public boolean isShutdown() {
+      return this == DisconnectReason.SHUTDOWN;
+    }
+
+    public boolean isTimeOut() {
+      return this == DisconnectReason.TIME_OUT;
+    }
+  }
+
+  private final OperatorClient client;
+  private final DisconnectReason reason;
+}

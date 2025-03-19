@@ -1,0 +1,77 @@
+plugins {
+  id("java")
+  id("maven-publish")
+  id("io.freefair.lombok") version "8.12.2"
+  id("org.springframework.boot") version "3.4.3"
+}
+
+group = "com.dulno"
+version = "1.0.0-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_23
+java.targetCompatibility = JavaVersion.VERSION_23
+
+publishing {
+  publications {
+    create<MavenPublication>("library") {
+      from(components["java"])
+    }
+  }
+  repositories {
+    maven {
+      url = uri("https://git.dulno.com/api/v4/projects/53/packages/maven")
+      credentials(HttpHeaderCredentials::class) {
+        name = "Private-Token"
+        value = System.getenv("DULNO_GITLAB_PRIVATE_TOKEN") ?:
+          findProperty("dulnoGitlabPrivateToken") as String?
+      }
+      authentication {
+        create("header", HttpHeaderAuthentication::class)
+      }
+    }
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    url = uri("https://git.dulno.com/api/v4/projects/51/packages/maven")
+    credentials(HttpHeaderCredentials::class) {
+      name = "Private-Token"
+      value = System.getenv("DULNO_GITLAB_PRIVATE_TOKEN") ?:
+        findProperty("dulnoGitlabPrivateToken") as String?
+    }
+    authentication {
+      create("header", HttpHeaderAuthentication::class)
+    }
+  }
+}
+
+dependencies {
+  testImplementation(platform("org.junit:junit-bom:5.12.0"))
+  testImplementation("org.junit.jupiter:junit-jupiter:5.12.0")
+
+  implementation("com.dulno:core:1.0.0-SNAPSHOT")
+
+  implementation("com.google.inject:guice:7.0.0")
+
+  implementation("com.google.guava:guava:33.4.0-jre")
+
+  implementation("org.projectlombok:lombok:1.18.36")
+  annotationProcessor("org.projectlombok:lombok:1.18.36")
+  testImplementation("org.projectlombok:lombok:1.18.36")
+  testAnnotationProcessor("org.projectlombok:lombok:1.18.36")
+
+  implementation("org.json:json:20250107")
+
+  implementation("io.netty:netty-all:4.1.118.Final")
+
+  implementation("io.kubernetes:client-java:23.0.0")
+}
+
+tasks.test {
+  useJUnitPlatform()
+}
+
+tasks.bootJar {
+  mainClass = "com.dulno.operator.OperatorApplication"
+}
