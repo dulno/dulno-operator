@@ -1,14 +1,14 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("io.freefair.lombok") version "8.12.2"
+  id("io.freefair.lombok") version "8.13"
   id("org.springframework.boot") version "3.4.3"
 }
 
 group = "com.dulno"
 version = "1.0.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_23
-java.targetCompatibility = JavaVersion.VERSION_23
+java.sourceCompatibility = JavaVersion.VERSION_21
+java.targetCompatibility = JavaVersion.VERSION_21
 
 publishing {
   publications {
@@ -47,8 +47,8 @@ repositories {
 }
 
 dependencies {
-  testImplementation(platform("org.junit:junit-bom:5.12.0"))
-  testImplementation("org.junit.jupiter:junit-jupiter:5.12.0")
+  testImplementation(platform("org.junit:junit-bom:5.12.1"))
+  testImplementation("org.junit.jupiter:junit-jupiter:5.12.1")
 
   implementation("com.dulno:core:1.0.0-SNAPSHOT")
 
@@ -63,7 +63,7 @@ dependencies {
 
   implementation("org.json:json:20250107")
 
-  implementation("io.netty:netty-all:4.1.118.Final")
+  implementation("io.netty:netty-all:4.1.119.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
