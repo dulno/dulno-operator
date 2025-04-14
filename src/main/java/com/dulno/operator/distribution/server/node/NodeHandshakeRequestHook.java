@@ -1,5 +1,6 @@
 package com.dulno.operator.distribution.server.node;
 
+import com.dulno.operator.distribution.OperatorDistribution;
 import lombok.RequiredArgsConstructor;
 import com.dulno.core.event.EventHook;
 import com.dulno.core.event.Hook;
@@ -16,6 +17,7 @@ import java.net.InetSocketAddress;
 public final class NodeHandshakeRequestHook implements Hook {
   private final OperatorDistributionConfiguration configuration;
   private final OperatorClientRegistry clientRegistry;
+  private final OperatorDistribution distribution;
   private final Log log;
 
   @EventHook
@@ -32,6 +34,7 @@ public final class NodeHandshakeRequestHook implements Hook {
     clientRegistry.registerClient(client);
     client.authorize();
     event.channel().writeAndFlush(new PacketOutgoingHandshakeResponse(true));
+    distribution.notifyEnvironment();
     log.info("Node " + channelHost + " has connected");
   }
 }

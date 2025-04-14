@@ -1,5 +1,6 @@
 package com.dulno.operator.distribution.server.node;
 
+import com.dulno.operator.distribution.OperatorDistribution;
 import lombok.RequiredArgsConstructor;
 import com.dulno.core.event.EventHook;
 import com.dulno.core.event.Hook;
@@ -10,12 +11,14 @@ import com.dulno.operator.distribution.event.node.NodeDisconnectEvent;
 @RequiredArgsConstructor(staticName = "create")
 public final class NodeDisconnectHook implements Hook {
   private final OperatorClientRegistry clientRegistry;
+  private final OperatorDistribution distribution;
   private final Log log;
 
   @EventHook
   private void nodeDisconnect(NodeDisconnectEvent event) {
     var client = event.client();
     clientRegistry.unregisterClient(client);
+    distribution.notifyEnvironment();
     var reason = event.reason();
     if (reason.isConnectionFailed()) {
       return;
