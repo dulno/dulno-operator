@@ -103,10 +103,11 @@ public final class OperatorDistribution {
    * Sends PacketOutgoingEnvironment to all registered clients
    */
   public void notifyEnvironment() {
-    for (var client : clientRegistry.findAllClients()) {
-      var neighbors = clientRegistry.findAllClients().stream()
+    var clients = clientRegistry.findAllClients()
+      .stream().filter(client -> client.state().isAuthorized()).toList();
+    for (var client : clients) {
+      var neighbors = clients.stream()
         .filter(neighbor -> neighbor != client)
-        .filter(neighbor -> neighbor.state().isAuthorized())
         .map(OperatorClient::hostname)
         .toList();
       client.sendPacket(new PacketOutgoingEnvironment(client.hostname(), neighbors));
