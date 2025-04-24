@@ -3,6 +3,7 @@ package com.dulno.operator.distribution;
 import com.dulno.operator.distribution.packet.incoming.node.PacketIncomingDisconnect;
 import com.dulno.operator.distribution.packet.incoming.node.PacketIncomingHandshakeRequest;
 import com.dulno.operator.distribution.packet.incoming.node.PacketIncomingPong;
+import com.dulno.operator.distribution.packet.outgoing.node.PacketOutgoingEnvironment;
 import com.dulno.operator.distribution.server.node.NodeDisconnectHook;
 import com.dulno.operator.distribution.server.node.NodeHandshakeRequestHook;
 import com.dulno.operator.distribution.server.node.NodePongHook;
@@ -73,9 +74,9 @@ public final class OperatorDistribution {
 
   private void registerHooks() {
     hookRegistry.register(NodeHandshakeRequestHook.create(configuration,
-      clientRegistry, log));
+      clientRegistry, this, log));
     hookRegistry.register(injector.getInstance(NodePongHook.class));
-    hookRegistry.register(NodeDisconnectHook.create(clientRegistry, log));
+    hookRegistry.register(NodeDisconnectHook.create(clientRegistry, this, log));
     hookRegistry.register(injector.getInstance(TableDiscrepancyHook.class));
     hookRegistry.register(injector.getInstance(TableStateRequestHook.class));
     hookRegistry.register(injector.getInstance(TableStateResponseHook.class));
@@ -96,6 +97,21 @@ public final class OperatorDistribution {
     packetEventRepository.registerEvent(PacketIncomingTableStateResponse.class,
       (client, packet) -> TableStateResponseEvent.create(packet.tableClass(),
         packet.state()));
+  }
+
+  /**
+   * Sends PacketOutgoingEnvironment to all registered clients
+   */
+  public void notifyEnvironment() {
+    var clients = clientRegistry.findAllClients()
+      .stream().filter(client -> client.state().isAuthorized()).toList();
+    for (var client : clients) {
+      var neighbors = clients.stream()
+        .filter(neighbor -> neighbor != client)
+        .map(OperatorClient::hostname)
+        .toList();
+      client.sendPacket(new PacketOutgoingEnvironment(client.hostname(), neighbors));
+    }
   }
 
   /**
