@@ -2,7 +2,7 @@ plugins {
   id("java")
   id("maven-publish")
   id("io.freefair.lombok") version "8.13"
-  id("org.springframework.boot") version "3.4.3"
+  id("org.springframework.boot") version "3.4.5"
 }
 
 group = "com.dulno"
