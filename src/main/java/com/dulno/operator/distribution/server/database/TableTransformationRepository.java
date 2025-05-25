@@ -52,14 +52,12 @@ public final class TableTransformationRepository {
 
   private CompletableFuture<Integer> findCoreReplicas() {
     var futureResponse = new CompletableFuture<Integer>();
-    var deploymentRequest = kubernetesApi.readNamespacedDeployment(
-      CORE_DEPLOYMENT_NAME, CORE_DEPLOYMENT_NAMESPACE);
     try {
-      deploymentRequest.executeAsync(new ApiCallback<>() {
+      var callback = new ApiCallback<V1Deployment>() {
         @Override
         public void onFailure(
           ApiException exception, int statusCode, Map<String,
-          List<String>> responseHeaders
+            List<String>> responseHeaders
         ) {
           errorRepository.processError(exception);
         }
@@ -83,7 +81,9 @@ public final class TableTransformationRepository {
           long bytesRead, long contentLength, boolean done
         ) {
         }
-      });
+      };
+      kubernetesApi.readNamespacedDeploymentAsync(CORE_DEPLOYMENT_NAME,
+        CORE_DEPLOYMENT_NAMESPACE, "false", callback);
       return futureResponse;
     } catch (Exception exception) {
       errorRepository.processError(exception);
