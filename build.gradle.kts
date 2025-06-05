@@ -63,7 +63,7 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
-  implementation("io.netty:netty-all:4.2.1.Final")
+  implementation("io.netty:netty-all:4.2.2.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
