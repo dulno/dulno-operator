@@ -11,6 +11,6 @@ public final class OperatorLogInjectionModule extends AbstractModule {
   @Provides
   @Singleton
   Log provideOperatorLog() throws Exception {
-    return Log.create("Operator", "/logs/");
+    return Log.create("Operator");
   }
 }
