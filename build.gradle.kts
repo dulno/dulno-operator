@@ -63,6 +63,8 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.8")
+
   implementation("io.netty:netty-all:4.2.2.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
