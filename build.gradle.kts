@@ -48,7 +48,7 @@ repositories {
 
 dependencies {
   testImplementation(platform("org.junit:junit-bom:5.13.2"))
-  testImplementation("org.junit.jupiter:junit-jupiter:5.13.2")
+  testImplementation("org.junit.jupiter:junit-jupiter:5.13.3")
 
   implementation("com.dulno:core:1.0.0-SNAPSHOT")
 
