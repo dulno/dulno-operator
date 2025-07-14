@@ -47,8 +47,8 @@ repositories {
 }
 
 dependencies {
-  testImplementation(platform("org.junit:junit-bom:5.13.2"))
-  testImplementation("org.junit.jupiter:junit-jupiter:5.13.2")
+  testImplementation(platform("org.junit:junit-bom:5.13.3"))
+  testImplementation("org.junit.jupiter:junit-jupiter:5.13.3")
 
   implementation("com.dulno:core:1.0.0-SNAPSHOT")
 
@@ -63,7 +63,7 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.8")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.9")
 
   implementation("io.netty:netty-all:4.2.2.Final")
 
