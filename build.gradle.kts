@@ -1,8 +1,8 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("io.freefair.lombok") version "8.14"
-  id("org.springframework.boot") version "3.5.4"
+  id("io.freefair.lombok") version "8.14.2"
+  id("org.springframework.boot") version "3.5.5"
 }
 
 group = "com.dulno"
@@ -56,16 +56,16 @@ dependencies {
 
   implementation("com.google.guava:guava:33.4.8-jre")
 
-  implementation("org.projectlombok:lombok:1.18.38")
-  annotationProcessor("org.projectlombok:lombok:1.18.38")
-  testImplementation("org.projectlombok:lombok:1.18.38")
-  testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
+  implementation("org.projectlombok:lombok:1.18.40")
+  annotationProcessor("org.projectlombok:lombok:1.18.40")
+  testImplementation("org.projectlombok:lombok:1.18.40")
+  testAnnotationProcessor("org.projectlombok:lombok:1.18.40")
 
   implementation("org.json:json:20250517")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.10")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.11")
 
-  implementation("io.netty:netty-all:4.2.4.Final")
+  implementation("io.netty:netty-all:4.2.5.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
