@@ -56,10 +56,10 @@ dependencies {
 
   implementation("com.google.guava:guava:33.5.0-jre")
 
-  implementation("org.projectlombok:lombok:1.18.40")
-  annotationProcessor("org.projectlombok:lombok:1.18.40")
-  testImplementation("org.projectlombok:lombok:1.18.40")
-  testAnnotationProcessor("org.projectlombok:lombok:1.18.40")
+  implementation("org.projectlombok:lombok:1.18.42")
+  annotationProcessor("org.projectlombok:lombok:1.18.42")
+  testImplementation("org.projectlombok:lombok:1.18.42")
+  testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
 
   implementation("org.json:json:20250517")
 
