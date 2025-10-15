@@ -63,9 +63,9 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.12")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.13")
 
-  implementation("io.netty:netty-all:4.2.6.Final")
+  implementation("io.netty:netty-all:4.2.7.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
