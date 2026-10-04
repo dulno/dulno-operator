@@ -1,7 +1,7 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("io.freefair.lombok") version "9.0.0"
+  id("io.freefair.lombok") version "9.1.0"
   id("org.springframework.boot") version "3.5.7"
 }
 
@@ -40,7 +40,7 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.13")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.14")
 
   implementation("io.netty:netty-all:4.2.7.Final")
 
