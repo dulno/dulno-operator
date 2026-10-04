@@ -2,7 +2,7 @@ plugins {
   id("java")
   id("maven-publish")
   id("io.freefair.lombok") version "9.1.0"
-  id("org.springframework.boot") version "3.5.7"
+  id("org.springframework.boot") version "4.1.1"
 }
 
 group = "com.dulno"
@@ -40,9 +40,9 @@ dependencies {
 
   implementation("org.json:json:20250517")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.14")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.24")
 
-  implementation("io.netty:netty-all:4.2.7.Final")
+  implementation("io.netty:netty-all:4.2.17.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
