@@ -12,7 +12,6 @@ The operator communicates with the nodes in the cluster to create a load balanci
 |      | Pipeline status                                                          |
 |------|--------------------------------------------------------------------------|
 | main | ![](https://github.com/dulno/dulno-operator/actions/workflows/ci.yml/badge.svg?branch=main) |
-| dev  | ![](https://github.com/dulno/dulno-operator/actions/workflows/ci.yml/badge.svg?branch=dev)  |
 
 
 ## License
