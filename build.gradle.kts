@@ -38,7 +38,7 @@ dependencies {
   testImplementation("org.projectlombok:lombok:1.18.42")
   testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
 
-  implementation("org.json:json:20250517")
+  implementation("org.json:json:20260814")
 
   implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.24")
 
