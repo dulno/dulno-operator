@@ -42,7 +42,7 @@ dependencies {
 
   implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.24")
 
-  implementation("io.netty:netty-all:4.2.17.Final")
+  implementation("io.netty:netty-all:4.2.18.Final")
 
   implementation("io.kubernetes:client-java:23.0.0")
 }
