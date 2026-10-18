@@ -40,7 +40,7 @@ dependencies {
 
   implementation("org.json:json:20260814")
 
-  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.24")
+  implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.27")
 
   implementation("io.netty:netty-all:4.2.18.Final")
 
