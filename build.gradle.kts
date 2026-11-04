@@ -44,7 +44,7 @@ dependencies {
 
   implementation("io.netty:netty-all:4.2.19.Final")
 
-  implementation("io.kubernetes:client-java:27.0.1")
+  implementation("io.kubernetes:client-java:28.0.0")
 }
 
 tasks.test {
